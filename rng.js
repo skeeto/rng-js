@@ -5,10 +5,11 @@
  *
  * @example
  * var rng = new RNG('Example');
- * rng.uniform();      //  0.23486116157656023
- * rng.normal();       // -0.19479177607547019
- * rng.exponential();  //  0.5060762637166598
- * rng.random(40, 50); //  43
+ * rng.random(40, 50);  //  42
+ * rng.uniform();       //  0.7972798995050903
+ * rng.normal();        // -0.6698504543216376
+ * rng.exponential();   //  1.0547367609131555
+ * rng.poisson(4);      //  2
  */
 
 /**
@@ -162,4 +163,19 @@ RNG.prototype.normal = function() {
  */
 RNG.prototype.exponential = function() {
     return -Math.log(this.uniform() || Math.pow(2, -53));
+};
+
+/**
+ * Generates numbers using this.uniform().
+ * @param {number} [mean=1]
+ * @returns {number} Number from the Poisson distribution.
+ */
+RNG.prototype.poisson = function(mean) {
+    var L = Math.exp(-(mean || 1));
+    var k = 0, p = 1;
+    do {
+        k++;
+        p *= this.uniform();
+    } while (p > L);
+    return k - 1;
 };
