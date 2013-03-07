@@ -144,12 +144,13 @@ RNG.prototype.random = function(n, m) {
  * @returns {number} Normally-distributed random number of mean 0, variance 1.
  */
 RNG.prototype.normal = function() {
-    if (this._normal) {
+    if (this._normal !== null) {
         var n = this._normal;
         this._normal = null;
         return n;
     } else {
-        var x = this.uniform(), y = this.uniform();
+        var x = this.uniform() || Math.pow(2, -53); // can't be exactly 0
+        var y = this.uniform();
         this._normal = Math.sqrt(-2 * Math.log(x)) * Math.sin(2 * Math.PI * y);
         return Math.sqrt(-2 * Math.log(x)) * Math.cos(2 * Math.PI * y);
     }
