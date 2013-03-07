@@ -8,6 +8,7 @@
  * rng.uniform();      //  0.23486116157656023
  * rng.normal();       // -0.19479177607547019
  * rng.exponential();  //  0.5060762637166598
+ * rng.random(40, 50); //  43
  */
 
 /**
@@ -120,6 +121,22 @@ RNG.prototype.uniform = function() {
         output += this.nextByte();
     }
     return output / (Math.pow(2, BYTES * 8) - 1);
+};
+
+/**
+ * Produce a random integer within [n, m).
+ * @param {number} [n=0]
+ * @param {number} m
+ *
+ */
+RNG.prototype.random = function(n, m) {
+    if (n == null) {
+        return this.uniform();
+    } else if (m == null) {
+        m = n;
+        n = 0;
+    }
+    return n + Math.floor(this.uniform() * (m - n));
 };
 
 /**

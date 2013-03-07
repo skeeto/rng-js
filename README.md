@@ -9,6 +9,7 @@ var rng = new RNG('Example');
 rng.uniform();      //  0.23486116157656023
 rng.normal();       // -0.19479177607547019
 rng.exponential();  //  0.5060762637166598
+rng.random(40, 50); //  43
 ```
 
 The underlying algorithm is RC4 and uniform number generation is about
