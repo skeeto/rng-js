@@ -91,7 +91,7 @@ function RNG(seed) {
         // Use it as a uniform number generator
         this.uniform = seed;
         this.nextByte = function() {
-            return ~~(this.uniform * 256);
+            return ~~(this.uniform() * 256);
         };
         seed = null;
     } else if (Object.prototype.toString.call(seed) !== "[object String]") {
