@@ -10,6 +10,7 @@
  * rng.normal();        // -0.6698504543216376
  * rng.exponential();   //  1.0547367609131555
  * rng.poisson(4);      //  2
+ * rng.gamma(4);        //  2.781724687386858
  */
 
 /**
@@ -178,4 +179,29 @@ RNG.prototype.poisson = function(mean) {
         p *= this.uniform();
     } while (p > L);
     return k - 1;
+};
+
+/**
+ * Generates numbers using this.uniform(), this.normal(),
+ * this.exponential(), and the Marsaglia-Tsang method.
+ * @param {number} a
+ * @returns {number} Number from the gamma distribution.
+ */
+RNG.prototype.gamma = function(a) {
+    var d = (a < 1 ? 1 + a : a) - 1 / 3;
+    var c = 1 / Math.sqrt(9 * d);
+    do {
+        do {
+            var x = this.normal();
+            var v = Math.pow(c * x + 1, 3);
+        } while (v <= 0);
+        var u = this.uniform();
+        var x2 = Math.pow(x, 2);
+    } while (u >= 1 - 0.0331 * x2 * x2 &&
+             Math.log(u) >= 0.5 * x2 + d * (1 - v + Math.log(v)));
+    if (a < 1) {
+        return d * v * Math.exp(this.exponential() / -a);
+    } else {
+        return d * v;
+    }
 };
