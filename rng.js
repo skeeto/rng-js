@@ -166,7 +166,7 @@ RNG.prototype.exponential = function() {
 };
 
 /**
- * Generates numbers using this.uniform().
+ * Generates numbers using this.uniform() and Knuth's method.
  * @param {number} [mean=1]
  * @returns {number} Number from the Poisson distribution.
  */
