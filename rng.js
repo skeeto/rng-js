@@ -8,24 +8,6 @@
  * rng.uniform();      //  0.23486116157656023
  * rng.normal();       // -0.19479177607547019
  * rng.exponential();  //  0.5060762637166598
- *
- *   The generator here is about 10x slower than Math.random in
- * V8. What you get in exchange for that is a seedable generator and
- * additional random distributions (see example). You can still get
- * speed *and* these additional distributions by using Math.random as
- * the core generator.
- *
- * @example
- * var rng = new RNG(Math.random);
- *
- *   When no seed is provided, one is created randomly from available
- * entropy sources. Seeds that are not strings are run through
- * JSON.stringify() to be used for seeding.
- *
- *   Replacing Math.random's generator with a seeded generator,
- *
- * @example
- * Math.random = RNG.prototype.uniform.bind(new RNG('my seed'));
  */
 
 /**
