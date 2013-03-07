@@ -6,12 +6,12 @@ all browsers.
 
 ```javascript
 var rng = new RNG('Example');
-rng.random(40, 50);  //  42
-rng.uniform();       //  0.7972798995050903
-rng.normal();        // -0.6698504543216376
-rng.exponential();   //  1.0547367609131555
-rng.poisson(4);      //  2
-rng.gamma(4);        //  2.781724687386858
+rng.random(40, 50);  // =>  42
+rng.uniform();       // =>  0.7972798995050903
+rng.normal();        // => -0.6698504543216376
+rng.exponential();   // =>  1.0547367609131555
+rng.poisson(4);      // =>  2
+rng.gamma(4);        // =>  2.781724687386858
 ```
 
 The underlying algorithm is RC4 and uniform number generation is about
