@@ -161,5 +161,5 @@ RNG.prototype.normal = function() {
  * @returns {number} Number from the exponential distribution, lambda = 1.
  */
 RNG.prototype.exponential = function() {
-    return -Math.log(this.uniform());
+    return -Math.log(this.uniform() || Math.pow(2, -53));
 };
