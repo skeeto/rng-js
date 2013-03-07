@@ -33,3 +33,11 @@ Here's how you would replace `Math.random` with a seeded generator.
 ```javascript
 Math.random = RNG.prototype.uniform.bind(new RNG('my seed'));
 ```
+
+Finally, for fun, a dice roller,
+
+```javascript
+var dice = RNG.roller('4d6 + 10');
+dice(); // => 17
+dice(); // => 11
+```
