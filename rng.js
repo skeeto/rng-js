@@ -227,3 +227,6 @@ RNG.roller = function(expr, rng) {
         return total;
     };
 };
+
+/* Provide a pre-made generator instance. */
+RNG.$ = new RNG();
