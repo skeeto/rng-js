@@ -1,6 +1,6 @@
 /**
  * Seedable random number generator functions.
- * @version 1.0
+ * @version 1.0.0
  * @license Public Domain
  *
  * @example
