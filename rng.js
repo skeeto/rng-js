@@ -17,10 +17,11 @@
  * Get the underlying bytes of this string.
  * @returns {Array} An array of bytes
  */
-String.prototype.getBytes = function() {
+
+var getBytes = function(str {
     var output = [];
-    for (var i = 0; i < this.length; i++) {
-        var c = this.charCodeAt(i);
+    for (var i = 0; i < str.length; i++) {
+        var c = str.charCodeAt(i);
         var bytes = [];
         do {
             bytes.push(c & 0xFF);
@@ -58,7 +59,7 @@ RC4.prototype._swap = function(i, j) {
  * @param {String} seed
  */
 RC4.prototype.mix = function(seed) {
-    var input = seed.getBytes();
+    var input = getBytes(seed);
     var j = 0;
     for (var i = 0; i < this.s.length; i++) {
         j += this.s[i] + input[i % input.length];
