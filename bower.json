@@ -1,6 +1,6 @@
 {
     "name": "rng-js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "rng.js",
     "description": "Seedable random number generator functions.",
     "license": "Public Domain"
