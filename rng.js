@@ -14,24 +14,6 @@
  */
 
 /**
- * Get the underlying bytes of this string.
- * @returns {Array} An array of bytes
- */
-String.prototype.getBytes = function() {
-    var output = [];
-    for (var i = 0; i < this.length; i++) {
-        var c = this.charCodeAt(i);
-        var bytes = [];
-        do {
-            bytes.push(c & 0xFF);
-            c = c >> 8;
-        } while (c > 0);
-        output = output.concat(bytes.reverse());
-    }
-    return output;
-};
-
-/**
  * @param {String} seed A string to seed the generator.
  * @constructor
  */
@@ -47,6 +29,25 @@ function RC4(seed) {
     }
 }
 
+/**
+ * Get the underlying bytes of a string.
+ * @param {string} string
+ * @returns {Array} An array of bytes
+ */
+RC4.getStringBytes = function(string) {
+    var output = [];
+    for (var i = 0; i < string.length; i++) {
+        var c = string.charCodeAt(i);
+        var bytes = [];
+        do {
+            bytes.push(c & 0xFF);
+            c = c >> 8;
+        } while (c > 0);
+        output = output.concat(bytes.reverse());
+    }
+    return output;
+};
+
 RC4.prototype._swap = function(i, j) {
     var tmp = this.s[i];
     this.s[i] = this.s[j];
@@ -58,7 +59,7 @@ RC4.prototype._swap = function(i, j) {
  * @param {String} seed
  */
 RC4.prototype.mix = function(seed) {
-    var input = seed.getBytes();
+    var input = RC4.getStringBytes(seed);
     var j = 0;
     for (var i = 0; i < this.s.length; i++) {
         j += this.s[i] + input[i % input.length];
