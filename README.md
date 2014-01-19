@@ -41,3 +41,16 @@ var dice = RNG.roller('4d6 + 10');
 dice(); // => 17
 dice(); // => 11
 ```
+
+## Node.js Usage
+
+```javascript
+var RNG = require('rng');
+```
+
+This module can also be [browserified][browserify] thanks to
+[browserify-shim][shim].
+
+
+[browserify]: https://github.com/substack/node-browserify
+[shim]: https://github.com/thlorenz/browserify-shim
