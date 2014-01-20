@@ -7,8 +7,7 @@ var path = require('path');
 var localPath = path.join(__dirname, 'rng.js');
 var src = fs.readFileSync(localPath, { encoding: 'utf8' });
 
-var ctx = { window: {}, console: console };
-ctx.self = ctx.window;
+var ctx = { window: {} };
 vm.runInNewContext(src, ctx);
 
 module.exports = ctx.RNG;
