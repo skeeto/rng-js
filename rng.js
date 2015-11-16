@@ -87,7 +87,7 @@ RC4.prototype.next = function() {
  */
 function RNG(seed) {
     if (seed == null) {
-        seed = (Math.random() + Date.now()).toString();
+        seed = '' + Math.random() + Date.now();
     } else if (typeof seed === "function") {
         // Use it as a uniform number generator
         this.uniform = seed;
