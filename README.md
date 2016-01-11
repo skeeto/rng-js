@@ -45,7 +45,7 @@ dice(); // => 11
 ## Node.js Usage
 
 ```javascript
-var RNG = require('rng');
+var RNG = require('rng-js');
 ```
 
 This module can also be [browserified][browserify] thanks to
