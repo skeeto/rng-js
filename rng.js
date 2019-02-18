@@ -231,3 +231,6 @@ RNG.roller = function(expr, rng) {
 
 /* Provide a pre-made generator instance. */
 RNG.$ = new RNG();
+
+// common js
+if (typeof exports !== 'undefined') exports.RNG = RNG;
